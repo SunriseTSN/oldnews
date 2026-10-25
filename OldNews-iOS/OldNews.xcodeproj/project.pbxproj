@@ -1,0 +1,51 @@
+// !$*UTF8*$!
+{
+  archiveVersion = 1;
+  classes = {};
+  objectVersion = 56;
+  objects = {
+    A10000000000000000000001 = {isa = PBXBuildFile; fileRef = A20000000000000000000001; };
+    A10000000000000000000002 = {isa = PBXBuildFile; fileRef = A20000000000000000000002; };
+    A10000000000000000000003 = {isa = PBXBuildFile; fileRef = A20000000000000000000003; };
+    A10000000000000000000004 = {isa = PBXBuildFile; fileRef = A20000000000000000000004; };
+    A10000000000000000000005 = {isa = PBXBuildFile; fileRef = A20000000000000000000005; };
+    A10000000000000000000006 = {isa = PBXBuildFile; fileRef = A20000000000000000000006; };
+    A10000000000000000000007 = {isa = PBXBuildFile; fileRef = A20000000000000000000007; };
+    A10000000000000000000008 = {isa = PBXBuildFile; fileRef = A20000000000000000000008; };
+    A10000000000000000000009 = {isa = PBXBuildFile; fileRef = A20000000000000000000009; };
+
+    A20000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldNewsApp.swift; sourceTree = "<group>"; };
+    A20000000000000000000002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+    A20000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldNewsAPI.swift; sourceTree = "<group>"; };
+    A20000000000000000000004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldNewsViewModel.swift; sourceTree = "<group>"; };
+    A20000000000000000000005 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+    A20000000000000000000006 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsView.swift; sourceTree = "<group>"; };
+    A20000000000000000000007 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+    A20000000000000000000008 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldNewsTheme.swift; sourceTree = "<group>"; };
+    A20000000000000000000009 = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+    A20000000000000000000010 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+    A20000000000000000000011 = {isa = PBXFileReference; lastKnownFileType = text; path = "Docs/Backend-API.md"; sourceTree = SOURCE_ROOT; };
+    A20000000000000000000012 = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+    A20000000000000000000013 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OldNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+
+    A30000000000000000000001 = {isa = PBXGroup; children = (A30000000000000000000002, A30000000000000000000003, A20000000000000000000011, A20000000000000000000012,); sourceTree = "<group>"; };
+    A30000000000000000000002 = {isa = PBXGroup; path = OldNews; sourceTree = "<group>"; children = (A20000000000000000000001, A20000000000000000000002, A20000000000000000000003, A20000000000000000000004, A20000000000000000000005, A20000000000000000000006, A20000000000000000000007, A20000000000000000000008, A20000000000000000000009, A20000000000000000000010,); };
+    A30000000000000000000003 = {isa = PBXGroup; name = Products; sourceTree = "<group>"; children = (A20000000000000000000013,); };
+
+    A40000000000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = A50000000000000000000002; buildPhases = (A60000000000000000000001, A60000000000000000000002, A60000000000000000000003,); buildRules = (); dependencies = (); name = OldNews; productName = OldNews; productReference = A20000000000000000000013; productType = "com.apple.product-type.application"; };
+    A40000000000000000000002 = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 2700; TargetAttributes = {A40000000000000000000001 = {CreatedOnToolsVersion = 27.0; }; }; }; buildConfigurationList = A50000000000000000000001; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; mainGroup = A30000000000000000000001; productRefGroup = A30000000000000000000003; projectDirPath = ""; projectRoot = ""; targets = (A40000000000000000000001,); };
+
+    A60000000000000000000001 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001, A10000000000000000000002, A10000000000000000000003, A10000000000000000000004, A10000000000000000000005, A10000000000000000000006, A10000000000000000000007, A10000000000000000000008,); runOnlyForDeploymentPostprocessing = 0; };
+    A60000000000000000000002 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+    A60000000000000000000003 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000009,); runOnlyForDeploymentPostprocessing = 0; };
+
+    A70000000000000000000001 = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; }; name = Debug; };
+    A70000000000000000000002 = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; }; name = Release; };
+    A70000000000000000000003 = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = OldNews/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 0.1.0; PRODUCT_BUNDLE_IDENTIFIER = com.sunrisesn.oldnews; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTS_MACCATALYST = NO; ENABLE_PREVIEWS = YES; }; name = Debug; };
+    A70000000000000000000004 = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = OldNews/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 0.1.0; PRODUCT_BUNDLE_IDENTIFIER = com.sunrisesn.oldnews; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTS_MACCATALYST = NO; ENABLE_PREVIEWS = YES; }; name = Release; };
+
+    A50000000000000000000001 = {isa = XCConfigurationList; buildConfigurations = (A70000000000000000000001, A70000000000000000000002,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+    A50000000000000000000002 = {isa = XCConfigurationList; buildConfigurations = (A70000000000000000000003, A70000000000000000000004,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+  };
+  rootObject = A40000000000000000000002;
+}

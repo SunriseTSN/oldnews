@@ -36,8 +36,25 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
+          PROJECT="$PROJECT_DIR/OldNews.xcodeproj"
+
+          echo "Listing available schemes and targets..."
+          xcodebuild -list -project "$PROJECT"
+
           mkdir -p "$GITHUB_WORKSPACE/build"
-          xcodebuild             -project "$PROJECT_DIR/OldNews.xcodeproj"             -target OldNews             -configuration Release             -sdk iphoneos             -derivedDataPath "$GITHUB_WORKSPACE/build/DerivedData"             CODE_SIGNING_ALLOWED=NO             CODE_SIGNING_REQUIRED=NO             CODE_SIGN_IDENTITY=''             build
+
+          xcodebuild \
+            -project "$PROJECT" \
+            -scheme OldNews \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath "$GITHUB_WORKSPACE/build/DerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build            -target OldNews             -configuration Release             -sdk iphoneos             -derivedDataPath "$GITHUB_WORKSPACE/build/DerivedData"             CODE_SIGNING_ALLOWED=NO             CODE_SIGNING_REQUIRED=NO             CODE_SIGN_IDENTITY=''             build
 
       - name: Package unsigned IPA
         shell: bash

@@ -1,1 +1,72 @@
+name: Build OldNews unsigned IPA
+
+on:
+  workflow_dispatch:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Xcode 27 runner image, includes the iOS 27 SDK.
+    runs-on: xcode-27
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Locate Xcode project
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -d "$GITHUB_WORKSPACE/OldNews.xcodeproj" ]]; then
+            PROJECT_DIR="$GITHUB_WORKSPACE"
+          elif [[ -d "$GITHUB_WORKSPACE/OldNews-iOS/OldNews.xcodeproj" ]]; then
+            PROJECT_DIR="$GITHUB_WORKSPACE/OldNews-iOS"
+          else
+            echo "Could not find OldNews.xcodeproj. Repository files found:" >&2
+            find "$GITHUB_WORKSPACE" -maxdepth 4 -name 'OldNews.xcodeproj' -print >&2 || true
+            exit 1
+          fi
+          echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
+          echo "Using project directory: $PROJECT_DIR"
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Build iOS app without code signing
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/build"
+          xcodebuild \
+            -project "$PROJECT_DIR/OldNews.xcodeproj" \
+            -target OldNews \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath "$GITHUB_WORKSPACE/build/DerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY='' \
+            build
+
+      - name: Package unsigned IPA
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP_PATH="$GITHUB_WORKSPACE/build/DerivedData/Build/Products/Release-iphoneos/OldNews.app"
+          test -d "$APP_PATH" || { echo "Built app not found: $APP_PATH"; exit 1; }
+          mkdir -p "$GITHUB_WORKSPACE/build/package/Payload"
+          ditto "$APP_PATH" "$GITHUB_WORKSPACE/build/package/Payload/OldNews.app"
+          cd "$GITHUB_WORKSPACE/build/package"
+          /usr/bin/zip -qry "$GITHUB_WORKSPACE/build/OldNews-unsigned.ipa" Payload
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: OldNews-unsigned-IPA
+          path: build/OldNews-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7
 
